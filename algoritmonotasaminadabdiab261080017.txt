@@ -1,0 +1,41 @@
+Algoritmo P04_SistemaNotas261080017
+
+1. Mostrar el menú principal con 5 opciones:
+   [1] Ingresar notas
+   [2] Mostrar notas y categorias
+   [3] Estadisticas
+   [4] Puntos extra
+   [5] Salir
+2. Leer la opción elegida por el usuario
+3. Si la opción no es 1, 2, 3, 4 o 5, mostrar error y volver al menú
+4. Si se intenta entrar a las opciones 2, 3 o 4 sin haber ingresado notas (hayNotas = Falso), mostrar "Todavia no hay notas" y regresar
+
+Opcion 1: Ingresar notas
+5. Repetir 5 veces para llenar el arreglo de notas:
+   5.1 Solicitar la nota del estudiante/posición
+   5.2 Si la nota es menor a 0 o mayor a 100, mostrar "Nota incorrecta" y pedirla de nuevo hasta que sea válida
+6. Marcar que ya hay notas guardadas (hayNotas <- Verdadero) y volver al menú
+
+Opcion 2: Mostrar notas y categorias
+7. Recorrer el arreglo de las 5 notas y evaluar cada una según su valor:
+   - Mayor o igual a 90 -> Excelente
+   - Mayor o igual a 80 -> Muy bueno
+   - Mayor o igual a 70 -> Bueno
+   - Mayor o igual a 61 -> Aprobado
+   - Menor a 61 -> Reprobado
+8. Mostrar en pantalla cada nota con su respectiva categoría y volver al menú
+
+Opcion 3: Estadisticas
+9. Inicializar acumuladores y variables (suma = 0, aprobados = 0, nota más alta = primera nota)
+10. Recorrer el arreglo sumando las notas, buscando la mayor y contando cuántas son mayores o iguales a 61 (aprobados)
+11. Calcular el promedio dividiendo la suma total entre 5
+12. Mostrar el promedio, la nota más alta y la cantidad de aprobados, luego volver al menú
+
+Opcion 4: Puntos extra
+13. Mostrar las 5 notas actuales y pedir al usuario que elija una posición (del 1 al 5) para sumarle 20 puntos
+14. Sumar los 20 puntos a la nota elegida en el arreglo
+15. Validar que si la nota supera 100, se mantenga exactamente en 100
+16. Mostrar las nuevas notas actualizadas y volver al menú
+
+Opcion 5: Salir
+17. Mostrar mensaje de salida y terminar el programa
