@@ -7,22 +7,32 @@ Escribir '4. División [primeros 2 digitos]'
 Escribir '5. Salir'
 FinFuncion
 
-SubProceso lavalidacion
-	Escribir "¿Desea continuar?"
-	Escribir "1. Si, volver al menú."
-	Escribir "2. No, cerrar el programa"
-	Leer validacion
-	Segun validacion
-		1:
-			Limpiar Pantalla
-		2:
-			quintaopcion
-		De Otro Modo:
-			Escribir 'Error:'
-			Escribir "seleccione una opción valida: "
+SubProceso op <- lavalidacion
+	Definir validacion Como Entero
+	
+	Repetir
 			
-	FinSegun
-FinSubAlgoritmo
+
+		Escribir "¿Desea continuar?"
+		Escribir "1. Si, volver al menú."
+		Escribir "2. No, cerrar el programa"
+		
+		Leer validacion
+		Segun validacion
+			1:
+				Limpiar Pantalla
+				op <- 0
+			2:
+				Escribir 'Saliendo... '
+				op <- 5 
+			De Otro Modo:
+				Limpiar pantalla
+				Escribir 'Error:'
+				Escribir "seleccione una opción valida: "
+				
+		FinSegun
+	hasta que validacion= 1 o validacion=2
+FinSubProceso
 
 Algoritmo calculadoraconfunciones
 	Definir op Como Entero
@@ -46,7 +56,7 @@ Algoritmo calculadoraconfunciones
 				resultadosuma <- lasuma(num1,num2,num3,num4)
 				Limpiar Pantalla
 				Escribir 'El resultado es: ', resultadosuma
-				lavalidacion
+				op<-lavalidacion
 			2:
 				Escribir 'Ingresa el primer numero:'
 				Leer num1
@@ -56,7 +66,7 @@ Algoritmo calculadoraconfunciones
 				resultadoresta <- laresta(num1,num2)
 				Limpiar Pantalla
 				Escribir 'El resultado es: ', resultadoresta
-				lavalidacion
+				op<-lavalidacion
 			3:
 				Escribir 'Ingresa el primer numero:'
 				Leer num1
@@ -67,7 +77,7 @@ Algoritmo calculadoraconfunciones
 				resultadoMultiplicacion <- lamultiplicacion(num1,num2,num3)
 				Limpiar Pantalla
 				Escribir 'El resultado es: ', resultadoMultiplicacion
-				lavalidacion
+				op<-lavalidacion
 			4:
 				Escribir 'Ingresa el primer numero:'
 				Leer num1
@@ -75,10 +85,10 @@ Algoritmo calculadoraconfunciones
 				Leer num2
 				Escribir 'Ingresa el tercer numero:'
 				resultadodivision <- ladivision(num1,num2)
-				lavalidacion
+				op<-lavalidacion
 			5:
 				Escribir 'Saliendo del programa...'
-				quintaopcion
+				op=5
 			De Otro Modo:
 				Limpiar Pantalla
 				Escribir 'Error:'
@@ -88,10 +98,6 @@ Algoritmo calculadoraconfunciones
 Hasta Que op=5	
 FinAlgoritmo
 
-Función quintaopcion
-Escribir 'Saliendo... '
-op=5
-FinFunción
 
 Función resultadosuma <- lasuma (a,b,c,d)
 	Definir resultadosuma Como Real
