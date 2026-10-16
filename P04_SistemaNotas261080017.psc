@@ -1,11 +1,12 @@
 Algoritmo P04_SistemaNotas261080017
 	
-	Definir opcion, aprobados Como Entero
+	Definir opcion, aprobados, seleccion Como Entero
 	Definir in1, in2, in3, in4, in5, suma, promedio, notamasalta, extra Como Real
-	Definir hayNotas Como Logico
-	extra <- 20
+	Definir hayNotas, extraAplicado Como Logico
 	
+	extra <- 20
 	hayNotas <- Falso
+	extraAplicado <- Falso 
 	
 	Repetir
 		
@@ -13,7 +14,13 @@ Algoritmo P04_SistemaNotas261080017
 		Escribir "1. Ingresar notas"
 		Escribir "2. Mostrar notas y categorias"
 		Escribir "3. Estadisticas"
-		Escribir "4. Sumar puntos extra"
+		
+		Si extraAplicado = Falso Entonces
+			Escribir "4. Sumar puntos extra (Disponible)"
+		SiNo
+			Escribir "4. Sumar puntos extra (Ya utilizados)"
+		FinSi
+		
 		Escribir "5. Salir"
 		Escribir "=================================="
 		Escribir "Ingrese una opcion:"
@@ -60,6 +67,7 @@ Algoritmo P04_SistemaNotas261080017
 				FinMientras
 				
 				hayNotas <- Verdadero
+				extraAplicado <- Falso 
 				
 				Escribir "Notas guardadas correctamente"
 				Escribir " "
@@ -228,54 +236,59 @@ Algoritmo P04_SistemaNotas261080017
 					Escribir "Presione una tecla para continuar"
 					Esperar Tecla
 				Sino
-					Definir seleccion Como Entero
-					Escribir "===== PUNTOS EXTRA ====="
-					Escribir "Tiene 20 puntos extra disponibles."
-					Escribir "1: ", in1
-					Escribir "2: ", in2
-					Escribir "3: ", in3
-					Escribir "4: ", in4
-					Escribir "5: ", in5
-					Escribir "Elija una nota (1 a 5) para sumar los puntos:"
-					Leer seleccion
-					
-					Segun seleccion Hacer
-						1:
-							in1 <- in1 + extra
-							Si in1 > 100 Entonces
-								in1 <- 100
-							FinSi
-						2:
-							in2 <- in2 + extra
-							Si in2 > 100 Entonces
-								in2 <- 100
-							FinSi
-						3:
-							in3 <- in3 + extra
-							Si in3 > 100 Entonces
-								in3 <- 100
-							FinSi
-						4:
-							in4 <- in4 + extra
-							Si in4 > 100 Entonces
-								in4 <- 100
-							FinSi
-						5:
-							in5 <- in5 + extra
-							Si in5 > 100 Entonces
-								in5 <- 100
-							FinSi
-						De Otro Modo:
-							Escribir "Opción inválida."
-					FinSegun
-					
-					Escribir "Puntos extra agregados."
-					Escribir "Las nuevas notas son:"
-					Escribir "Calificacion 1: ", in1
-					Escribir "Calificacion 2: ", in2
-					Escribir "Calificacion 3: ", in3
-					Escribir "Calificacion 4: ", in4
-					Escribir "Calificacion 5: ", in5
+					Si extraAplicado = Verdadero Entonces
+						Escribir "Los puntos extra ya fueron aplicados anteriormente y no se pueden volver a sumar."
+					Sino
+						Escribir "===== PUNTOS EXTRA ====="
+						Escribir "Tiene 20 puntos extra disponibles."
+						Escribir "1: ", in1
+						Escribir "2: ", in2
+						Escribir "3: ", in3
+						Escribir "4: ", in4
+						Escribir "5: ", in5
+						Escribir "Elija una nota (1 a 5) para sumar los puntos:"
+						Leer seleccion
+						
+						Segun seleccion Hacer
+							1:
+								in1 <- in1 + extra
+								Si in1 > 100 Entonces
+									in1 <- 100
+								FinSi
+							2:
+								in2 <- in2 + extra
+								Si in2 > 100 Entonces
+									in2 <- 100
+								FinSi
+							3:
+								in3 <- in3 + extra
+								Si in3 > 100 Entonces
+									in3 <- 100
+								FinSi
+							4:
+								in4 <- in4 + extra
+								Si in4 > 100 Entonces
+									in4 <- 100
+								FinSi
+							5:
+								in5 <- in5 + extra
+								Si in5 > 100 Entonces
+									in5 <- 100
+								FinSi
+							De Otro Modo:
+								Escribir "Opción inválida."
+						FinSegun
+						
+						extraAplicado <- Verdadero
+						
+						Escribir "Puntos extra agregados exitosamente."
+						Escribir "Las nuevas notas son:"
+						Escribir "Calificacion 1: ", in1
+						Escribir "Calificacion 2: ", in2
+						Escribir "Calificacion 3: ", in3
+						Escribir "Calificacion 4: ", in4
+						Escribir "Calificacion 5: ", in5
+					FinSi
 					
 					Escribir " "
 					Escribir "Presione una tecla para continuar"
